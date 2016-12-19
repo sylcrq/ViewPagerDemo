@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.activity_main, MainFragment.newInstance("", ""));
+        transaction.replace(R.id.activity_main, MainFragment.newInstance());
         transaction.commit();
     }
 

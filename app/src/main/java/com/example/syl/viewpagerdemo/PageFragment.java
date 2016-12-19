@@ -2,6 +2,7 @@ package com.example.syl.viewpagerdemo;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,8 +15,6 @@ import android.view.ViewGroup;
 import com.example.syl.viewpagerdemo.dummy.DummyContent;
 import com.example.syl.viewpagerdemo.dummy.DummyContent.DummyItem;
 
-import java.util.List;
-
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -25,9 +24,7 @@ import java.util.List;
 public class PageFragment extends Fragment {
     public static final String TAG = PageFragment.class.getSimpleName();
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     public static final String ARG_INDEX = "index";
@@ -40,7 +37,6 @@ public class PageFragment extends Fragment {
     public PageFragment() {
     }
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static PageFragment newInstance(int index, int columnCount) {
         PageFragment fragment = new PageFragment();
@@ -59,13 +55,13 @@ public class PageFragment extends Fragment {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
             mIndex = getArguments().getInt(ARG_INDEX);
         }
-        Log.d(TAG, "onCreate$" + mIndex);
+        Log.d(TAG, "onCreate" + getPageInfo());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d(TAG, "onCreateView$" + mIndex);
+        Log.d(TAG, "onCreateView" + getPageInfo());
         View view = inflater.inflate(R.layout.fragment_page_list, container, false);
 
         // Set the adapter
@@ -82,11 +78,16 @@ public class PageFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.d(TAG, "onViewCreated" + getPageInfo());
+    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.d(TAG, "onAttach$" + mIndex);
+        Log.d(TAG, "onAttach" + getPageInfo());
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
         } else {
@@ -98,20 +99,48 @@ public class PageFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        Log.d(TAG, "onDetach$" + mIndex);
+        Log.d(TAG, "onDetach" + getPageInfo());
         mListener = null;
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        Log.d(TAG, "setUserVisibleHint$" + mIndex + " # " + isVisibleToUser);
+        Log.d(TAG, "setUserVisibleHint#" + isVisibleToUser + getPageInfo());
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.d(TAG, "onDestroyView$" + mIndex);
+        Log.d(TAG, "onDestroyView" + getPageInfo());
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart" + getPageInfo());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume" + getPageInfo());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause" + getPageInfo());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop" + getPageInfo());
+    }
+
+    private String getPageInfo() {
+        return " [index=" + mIndex + "," + this + "]";
     }
 
     /**
@@ -125,7 +154,6 @@ public class PageFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(DummyItem item);
     }
 }
