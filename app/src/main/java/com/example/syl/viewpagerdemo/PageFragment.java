@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -63,7 +64,7 @@ public class PageFragment extends Fragment {
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView" + getPageInfo());
         View view = inflater.inflate(R.layout.fragment_page_list, container, false);
-
+        view.setBackgroundColor(ContextCompat.getColor(getContext(), getPageColor()));
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -141,6 +142,21 @@ public class PageFragment extends Fragment {
 
     private String getPageInfo() {
         return " [index=" + mIndex + "," + this + "]";
+    }
+
+    private int getPageColor() {
+        switch (mIndex) {
+            case 0:
+                return R.color.lime;
+            case 1:
+                return R.color.red;
+            case 2:
+                return R.color.aqua;
+            case 3:
+                return R.color.silver;
+            default:
+                return R.color.white;
+        }
     }
 
     /**
