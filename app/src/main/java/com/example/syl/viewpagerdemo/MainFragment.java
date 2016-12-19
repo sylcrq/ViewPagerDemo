@@ -80,6 +80,8 @@ public class MainFragment extends Fragment {
 
             }
         });
+        //let the system keep 3 page instances on both sides of the current page
+//        mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(new PagerAdapter(getFragmentManager()));
 
         return view;
