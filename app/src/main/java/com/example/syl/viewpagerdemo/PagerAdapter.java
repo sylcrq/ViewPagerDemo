@@ -22,4 +22,9 @@ public class PagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return 4;
     }
+
+    @Override
+    public float getPageWidth(int position) {
+        return 0.93f;
+    }
 }
