@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ToxicBakery.viewpager.transforms.ZoomOutTranformer;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,10 +84,12 @@ public class MainFragment extends Fragment {
         });
         //let the system keep 3 page instances on both sides of the current page
 //        mViewPager.setOffscreenPageLimit(3);
-        mViewPager.setClipToPadding(false);
-        mViewPager.setPageMargin(12);
+        //ViewPager with Visible Adjacent Pages
+//        mViewPager.setClipToPadding(false);
+//        mViewPager.setPageMargin(12);
         mViewPager.setAdapter(new PagerAdapter(getFragmentManager()));
-
+        //Animating the Scroll with PageTransformer
+        mViewPager.setPageTransformer(true, new ZoomOutTranformer());
         return view;
     }
 
