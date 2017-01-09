@@ -4,18 +4,24 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.annotationprocessor.processor.CustomAnnotation;
 import com.example.syl.viewpagerdemo.dummy.DummyContent;
 
+import com.example.annotationprocessor.generated.GeneratedClass;
+
+@CustomAnnotation
 public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener,
         PageFragment.OnListFragmentInteractionListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
+    @CustomAnnotation
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.activity_main, MainFragment.newInstance());
         transaction.commit();
+
+        showAnnotationMessage();
     }
 
     @Override
@@ -46,5 +54,16 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         if (requestCode == 1024) {
             Log.d(TAG, "yyy#" + requestCode + "," + resultCode);
         }
+    }
+
+    private void showAnnotationMessage() {
+        GeneratedClass generatedClass = new GeneratedClass();
+        String message = generatedClass.getMessage();
+        // android.support.v7.app.AlertDialog
+        new AlertDialog.Builder(this)
+                .setPositiveButton("Ok", null)
+                .setTitle("Annotation Processor Messages")
+                .setMessage(message)
+                .show();
     }
 }
