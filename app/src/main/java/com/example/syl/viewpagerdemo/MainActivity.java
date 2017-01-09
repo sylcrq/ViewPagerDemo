@@ -10,10 +10,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.annotationprocessor.processor.CustomAnnotation;
+import com.example.annotation.CustomAnnotation;
 import com.example.syl.viewpagerdemo.dummy.DummyContent;
 
-import com.example.annotationprocessor.generated.GeneratedClass;
+//import com.example.annotationprocessor.generated.GeneratedClass;
 
 @CustomAnnotation
 public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener,
@@ -57,13 +57,13 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
     }
 
     private void showAnnotationMessage() {
-        GeneratedClass generatedClass = new GeneratedClass();
-        String message = generatedClass.getMessage();
+//        GeneratedClass generatedClass = new GeneratedClass();
+//        String message = generatedClass.getMessage();
         // android.support.v7.app.AlertDialog
-        new AlertDialog.Builder(this)
-                .setPositiveButton("Ok", null)
-                .setTitle("Annotation Processor Messages")
-                .setMessage(message)
-                .show();
+//        new AlertDialog.Builder(this)
+//                .setPositiveButton("Ok", null)
+//                .setTitle("Annotation Processor Messages")
+//                .setMessage(message)
+//                .show();
     }
 }

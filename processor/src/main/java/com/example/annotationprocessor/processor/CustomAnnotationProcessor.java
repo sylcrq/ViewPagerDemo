@@ -1,12 +1,16 @@
 package com.example.annotationprocessor.processor;
 
+import com.example.annotation.CustomAnnotation;
+
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Collections;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
+import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.RoundEnvironment;
-import javax.annotation.processing.SupportedAnnotationTypes;
+import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.tools.JavaFileObject;
@@ -14,8 +18,22 @@ import javax.tools.JavaFileObject;
 /**
  * Created by Shen YunLong on 2017/01/04.
  */
-@SupportedAnnotationTypes("com.example.annotationprocessor.processor.CustomAnnotation")
 public class CustomAnnotationProcessor extends AbstractProcessor {
+
+    @Override
+    public synchronized void init(ProcessingEnvironment processingEnv) {
+        super.init(processingEnv);
+    }
+
+    @Override
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.latestSupported();
+    }
+
+    @Override
+    public Set<String> getSupportedAnnotationTypes() {
+        return Collections.singleton(CustomAnnotation.class.getCanonicalName());
+    }
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
