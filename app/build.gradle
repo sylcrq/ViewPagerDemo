@@ -23,12 +23,13 @@ android {
 
 dependencies {
 //    compile files('libs/processor.jar')
+    compile "com.facebook.react:react-native:0.40.0" // From node_modules.
     compile project(":annotation")
     apt project(":processor")
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+//    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//    })
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:support-v4:25.1.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'

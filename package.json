@@ -1,0 +1,25 @@
+{
+  "name": "view-pager-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-native": "^0.40.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sylcrq/ViewPagerDemo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sylcrq/ViewPagerDemo/issues"
+  },
+  "homepage": "https://github.com/sylcrq/ViewPagerDemo#readme"
+}

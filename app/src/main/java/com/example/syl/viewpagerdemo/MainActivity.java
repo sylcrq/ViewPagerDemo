@@ -43,8 +43,11 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
     @Override
     public void onListFragmentInteraction(DummyContent.DummyItem item) {
         Toast.makeText(this, "" + item.content, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, TestActivity.class);
-        startActivityForResult(intent, 1024);
+//        Intent intent = new Intent(this, TestActivity.class);
+//        startActivityForResult(intent, 1024);
+
+        Intent intent = new Intent(this, MyReactActivity.class);
+        startActivity(intent);
     }
 
     @Override
